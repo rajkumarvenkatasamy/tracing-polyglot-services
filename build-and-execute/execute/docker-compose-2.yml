@@ -1,0 +1,17 @@
+---
+version: '3.9'
+services:
+  api-gateway:
+    image: ${API_GATEWAY_APP_NAME}:${API_GATEWAY_APP_TAG}
+    container_name: ${API_GATEWAY_APP_NAME}
+    ports:
+      - ${API_GATEWAY_APP_PORT}:${API_GATEWAY_APP_PORT}
+    environment:
+      JAVA_OPTS: "-Deureka.client.service-url.defaultZone=http://${SERVICE_REGISTRY_APP_NAME}:8761/eureka/"
+      TZ: ${TIMEZONE}
+    networks:
+      - tracing-polyglot-services
+
+networks:
+  tracing-polyglot-services:
+    external: true    

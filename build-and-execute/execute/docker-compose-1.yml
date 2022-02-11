@@ -1,0 +1,25 @@
+---
+version: '3.9'
+services:
+  service-registry:
+    image: ${SERVICE_REGISTRY_APP_NAME}:${SERVICE_REGISTRY_APP_TAG}
+    container_name: ${SERVICE_REGISTRY_APP_NAME}
+    ports:
+      - ${SERVICE_REGISTRY_APP_PORT}:${SERVICE_REGISTRY_APP_PORT}
+    environment:
+      TZ: ${TIMEZONE}
+    networks:
+      - tracing-polyglot-services
+
+  zipkin:
+    image: openzipkin/zipkin:2
+    container_name: zipkin
+    hostname: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - tracing-polyglot-services
+
+networks:
+  tracing-polyglot-services:
+    external: true      

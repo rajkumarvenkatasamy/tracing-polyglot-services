@@ -1,0 +1,16 @@
+---
+version: '3.9'
+services:
+  python-flask-service:
+    image: ${PYTHON_APP_NAME}:${PYTHON_APP_TAG}
+    container_name: ${PYTHON_APP_NAME}
+    environment:
+      TZ: ${TIMEZONE}
+    ports:
+      - ${PYTHON_APP_PORT}:${PYTHON_APP_PORT}
+    networks:
+      - tracing-polyglot-services
+
+networks:
+  tracing-polyglot-services:
+    external: true

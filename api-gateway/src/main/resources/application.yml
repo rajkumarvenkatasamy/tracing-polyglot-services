@@ -1,0 +1,38 @@
+# See application.properties where custom application configurations are maintained.
+
+server:
+    port: 9191
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
+
+spring:
+  application:
+        name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: java-spring-reactive-service
+          uri: lb://java-spring-reactive-service
+          predicates:
+            - Path=/java-service/**
+
+        - id: python-flask-service
+          uri: lb://python-flask-service
+          predicates:
+            - Path=/python-flask-service/**
+
+      httpserver:
+        wiretap: true
+
+      httpclient:
+        wiretap: true
+

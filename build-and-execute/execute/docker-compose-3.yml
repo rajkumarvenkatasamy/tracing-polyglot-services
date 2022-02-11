@@ -1,0 +1,17 @@
+---
+version: '3.9'
+services:
+  java-spring-reactive-service:
+    image: ${JAVA_APP_NAME}:${JAVA_APP_TAG}
+    container_name: ${JAVA_APP_NAME}
+    ports:
+      - ${JAVA_APP_PORT}:${JAVA_APP_PORT}
+    environment:
+      JAVA_OPTS: "-Deureka.client.service-url.defaultZone=http://${SERVICE_REGISTRY_APP_NAME}:8761/eureka/"
+      TZ: ${TIMEZONE}
+    networks:
+      - tracing-polyglot-services
+
+networks:
+  tracing-polyglot-services:
+    external: true
