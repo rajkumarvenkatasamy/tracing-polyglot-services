@@ -10,20 +10,41 @@ Demo Project : Distributed tracing with Zipkin in a Polyglot Microservices proje
 * The build and execution scripts are directly compatible with Windows OS. However it should be easy enough for you to convert it to shell or other scripting formats.
 
 
+## Development Setup in Local machine
+
+* Git clone the project repository
+
+* Switch to python flask app
+  
+  cd ${project base directory}\python-flask-service
+
+* Create the virtual environment by executing the command
+   
+   python -m venv .\venv
+
+* Activate the virtual environment by executing the command
+   
+   venv\Scripts\activate 
+
+* Install the dependent packages for python app
+  
+  pip install -r requirements.txt
+
+
 ## Build
 
-<project-base-dir>\build-and-execute\build\build.bat
+${project-base-dir-path}\build-and-execute\build\build.bat
 
 
 ## Execute
 
-### Starting the services
+### Start the services
 
-<project-base-dir>\build-and-execute\execute\start.bat
+${project-base-dir-path}\build-and-execute\execute\start.bat
 
-### Stopping the services
+### Stop the services
 
-<project-base-dir>\build-and-execute\execute\stop.bat
+${project-base-dir-path}\build-and-execute\execute\stop.bat
 
 
 ## Spring Cloud Eureka Server URL
@@ -41,7 +62,7 @@ http://localhost:9411/
 1. GET http://localhost:9191/java-service/api/v1/internal/greetings
 
    * Internal endpoint which makes a call to Java microservice app and returns the response to the user. 
-   * Request traversal path : User -> API Gateway -> Java App -> Response to User
+   * Request traversal path : User -> API Gateway -> Java App -> Response to the User
 
 2. GET http://localhost:9191/java-service/api/v1/external/greetings/
 

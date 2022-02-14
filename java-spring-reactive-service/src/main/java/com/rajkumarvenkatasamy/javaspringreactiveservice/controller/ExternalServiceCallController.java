@@ -36,7 +36,7 @@ public class ExternalServiceCallController {
     }
 
     @GetMapping("/api/v1/external/belated-greetings")
-    String getBelatedGreetingFromExternalService() {
+    String getBelatedGreetingFromExternalService() throws InterruptedException {
         return externalService.getBelatedGreetingFromPythonFlaskService();
     }
 }

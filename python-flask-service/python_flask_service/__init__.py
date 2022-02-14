@@ -5,8 +5,8 @@ Author: Rajkumar Venkatasamy
 from flask import Flask
 import py_eureka_client.eureka_client as ec
 
-from python_flask_service.controller.greetings_controller import greetings_blueprint
 from python_flask_service.util.zipkin_utils import ZipkinUtils
+from python_flask_service.controller.greetings_controller import greetings_blueprint
 
 python_flask_service = Flask(__name__)
 
@@ -28,3 +28,13 @@ def before_request():
     :return:
     """
     print("At python_flask_service.before_request()", flush=True)
+
+
+@python_flask_service.teardown_request
+@ZipkinUtils.zipkin_setup_wrapper
+def teardown_request():
+    """
+    This function will run after every request even if there is an exception.
+    :return:
+    """
+    print("At python_flask_service.teardown_request()", flush=True)
