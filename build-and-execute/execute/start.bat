@@ -10,3 +10,4 @@ docker-compose -f docker-compose-3.yml up -d
 timeout /T 10 /NOBREAK
 
 docker-compose -f docker-compose-4.yml up -d
+timeout /T 15 /NOBREAK

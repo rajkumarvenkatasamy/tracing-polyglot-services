@@ -33,18 +33,30 @@ Demo Project : Distributed tracing with Zipkin in a Polyglot Microservices proje
 
 ## Build
 
-${project-base-dir-path}\build-and-execute\build\build.bat
+cd ${project-base-dir-path}\build-and-execute\build
+
+execute the following build script
+
+build.bat
 
 
 ## Execute
 
 ### Start the services
 
-${project-base-dir-path}\build-and-execute\execute\start.bat
+cd ${project-base-dir-path}\build-and-execute\execute
+
+execute the following start script
+
+start.bat
 
 ### Stop the services
 
-${project-base-dir-path}\build-and-execute\execute\stop.bat
+cd ${project-base-dir-path}\build-and-execute\execute
+
+execute the following stop script
+
+stop.bat
 
 
 ## Spring Cloud Eureka Server URL
