@@ -25,11 +25,6 @@ public class ExternalServiceCallController {
         this.externalService = externalService;
     }
 
-    @GetMapping("/api/v1/internal/greetings")
-    String greetings() {
-        return "Greeting from Java Spring Reactive App";
-    }
-
     @GetMapping("/api/v1/external/greetings")
     String getGreetingFromExternalService() {
         return externalService.getGreetingFromPythonFlaskService();
